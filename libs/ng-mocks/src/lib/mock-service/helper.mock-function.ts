@@ -1,5 +1,6 @@
 import coreDefineProperty from '../common/core.define-property';
 
+import { installAsyncComplianceApi } from '../common/async-compliance';
 import { CustomMockFunction, MockedFunction } from './types';
 
 const mockFunction: {
@@ -26,6 +27,8 @@ const mockFunction: {
   coreDefineProperty(func, '__ngMocks', true);
   coreDefineProperty(func, '__ngMocksSet', (newSetValue: any) => (setValue = newSetValue));
   coreDefineProperty(func, '__ngMocksGet', (newValue: any) => (value = newValue));
+
+  installAsyncComplianceApi(func);
 
   return func;
 };

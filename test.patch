@@ -1,0 +1,376 @@
+diff --git a/test.sh b/test.sh
+old mode 100644
+new mode 100755
+index 46b35db42..e1fbd8259
+--- a/test.sh
++++ b/test.sh
+@@ -1,158 +1,23 @@
+ #!/usr/bin/env bash
+-set -e
+-
+-if [ "$1" != "coverage" ] && [ "$1" != "root" ]; then
+-  docker compose run --rm ng-mocks npm run build:dev
+-fi
+-
+-if [ "$1" = "" ] || [ "$1" = "root" ]; then
+-  docker compose run --rm ng-mocks npm run test
+-fi
+-
+-if [ "$1" = "coverage" ]; then
+-  docker compose run --rm -e WITH_COVERAGE=1 ng-mocks npm run test
+-fi
+-
+-if [ "$1" = "" ] || [ "$1" = "a5" ] || [ "$1" = "a5es5" ]; then
+-  docker compose run --rm ng-mocks npm run s:a5es5 && \
+-    docker compose run --rm ng-mocks npm run s:test:a5es5 && \
+-    docker compose run --rm ng-mocks npm run s:app:a5es5 && \
+-    docker compose run --rm a5es5 npm run test
+-fi
+-
+-if [ "$1" = "" ] || [ "$1" = "a5" ] || [ "$1" = "a5es2015" ]; then
+-  docker compose run --rm ng-mocks npm run s:a5es2015 && \
+-    docker compose run --rm ng-mocks npm run s:test:a5es2015 && \
+-    docker compose run --rm ng-mocks npm run s:app:a5es2015 && \
+-    docker compose run --rm a5es2015 npm run test
+-fi
+-
+-if [ "$1" = "" ] || [ "$1" = "a6" ]; then
+-  docker compose run --rm ng-mocks npm run s:a6 && \
+-    docker compose run --rm ng-mocks npm run s:test:a6 && \
+-    docker compose run --rm ng-mocks npm run s:app:a6 && \
+-    docker compose run --rm a6 npm run test
+-fi
+-
+-if [ "$1" = "" ] || [ "$1" = "a7" ]; then
+-  docker compose run --rm ng-mocks npm run s:a7 && \
+-    docker compose run --rm ng-mocks npm run s:test:a7 && \
+-    docker compose run --rm ng-mocks npm run s:app:a7 && \
+-    docker compose run --rm a7 npm run test
+-fi
+-
+-if [ "$1" = "" ] || [ "$1" = "a8" ]; then
+-  docker compose run --rm ng-mocks npm run s:a8 && \
+-    docker compose run --rm ng-mocks npm run s:test:a8 && \
+-    docker compose run --rm ng-mocks npm run s:app:a8 && \
+-    docker compose run --rm a8 npm run test
+-fi
+-
+-if [ "$1" = "" ] || [ "$1" = "a9" ]; then
+-  docker compose run --rm ng-mocks npm run s:a9 && \
+-    docker compose run --rm ng-mocks npm run s:test:a9 && \
+-    docker compose run --rm ng-mocks npm run s:app:a9 && \
+-    docker compose run --rm a9 npm run test
+-fi
+-
+-if [ "$1" = "" ] || [ "$1" = "a10" ]; then
+-  docker compose run --rm ng-mocks npm run s:a10 && \
+-    docker compose run --rm ng-mocks npm run s:test:a10 && \
+-    docker compose run --rm ng-mocks npm run s:app:a10 && \
+-    docker compose run --rm a10 npm run test
+-fi
+-
+-if [ "$1" = "" ] || [ "$1" = "a11" ]; then
+-  docker compose run --rm ng-mocks npm run s:a11 && \
+-    docker compose run --rm ng-mocks npm run s:test:a11 && \
+-    docker compose run --rm ng-mocks npm run s:app:a11 && \
+-    docker compose run --rm a11 npm run test
+-fi
+-
+-if [ "$1" = "" ] || [ "$1" = "a12" ]; then
+-  docker compose run --rm ng-mocks npm run s:a12 && \
+-    docker compose run --rm ng-mocks npm run s:test:a12 && \
+-    docker compose run --rm ng-mocks npm run s:app:a12 && \
+-    docker compose run --rm a12 npm run test
+-fi
+-
+-if [ "$1" = "" ] || [ "$1" = "a13" ]; then
+-  docker compose run --rm ng-mocks npm run s:a13 && \
+-    docker compose run --rm ng-mocks npm run s:test:a13 && \
+-    docker compose run --rm ng-mocks npm run s:app:a13 && \
+-    docker compose run --rm a13 npm run test
+-fi
+-
+-if [ "$1" = "" ] || [ "$1" = "a14" ]; then
+-  docker compose run --rm ng-mocks npm run s:a14 && \
+-    docker compose run --rm ng-mocks npm run s:test:a14 && \
+-    docker compose run --rm ng-mocks npm run s:app:a14 && \
+-    docker compose run --rm a14 npm run test
+-fi
+-
+-if [ "$1" = "" ] || [ "$1" = "a15" ]; then
+-  docker compose run --rm ng-mocks npm run s:a15 && \
+-    docker compose run --rm ng-mocks npm run s:test:a15 && \
+-    docker compose run --rm ng-mocks npm run s:app:a15 && \
+-    docker compose run --rm a15 npm run test
+-fi
+-
+-if [ "$1" = "" ] || [ "$1" = "a16" ]; then
+-  docker compose run --rm ng-mocks npm run s:a16 && \
+-    docker compose run --rm ng-mocks npm run s:test:a16 && \
+-    docker compose run --rm ng-mocks npm run s:app:a16 && \
+-    docker compose run --rm a16 npm run test
+-fi
+-
+-if [ "$1" = "" ] || [ "$1" = "a17" ]; then
+-  docker compose run --rm ng-mocks npm run s:a17 && \
+-    docker compose run --rm ng-mocks npm run s:test:a17 && \
+-    docker compose run --rm ng-mocks npm run s:app:a17 && \
+-    docker compose run --rm a17 npm run test
+-fi
+-
+-if [ "$1" = "" ] || [ "$1" = "a18" ]; then
+-  docker compose run --rm ng-mocks npm run s:a18 && \
+-    docker compose run --rm ng-mocks npm run s:test:a18 && \
+-    docker compose run --rm ng-mocks npm run s:app:a18 && \
+-    docker compose run --rm a18 npm run test
+-fi
+-
+-if [ "$1" = "" ] || [ "$1" = "a19" ]; then
+-  docker compose run --rm ng-mocks npm run s:a19 && \
+-    docker compose run --rm ng-mocks npm run s:test:a19 && \
+-    docker compose run --rm ng-mocks npm run s:app:a19 && \
+-    docker compose run --rm a19 npm run test
+-fi
+-
+-if [ "$1" = "" ] || [ "$1" = "a20" ]; then
+-  docker compose run --rm ng-mocks npm run s:a20 && \
+-    docker compose run --rm ng-mocks npm run s:test:a20 && \
+-    docker compose run --rm ng-mocks npm run s:app:a20 && \
+-    docker compose run --rm a20 npm run test
+-fi
+-
+-if [ "$1" = "" ] || [ "$1" = "jasmine" ]; then
+-  docker compose run --rm ng-mocks npm run s:jasmine && \
+-    docker compose run --rm ng-mocks npm run s:app:jasmine && \
+-    docker compose run --rm jasmine npm run test
+-fi
+-
+-if [ "$1" = "" ] || [ "$1" = "jest" ]; then
+-  docker compose run --rm ng-mocks npm run s:jest && \
+-    docker compose run --rm ng-mocks npm run s:app:jest && \
+-    docker compose run --rm jest npm run test
+-fi
+-
+-if [ "$1" = "" ] || [ "$1" = "min" ]; then
+-  docker compose run --rm ng-mocks npm run s:min && \
+-    docker compose run --rm ng-mocks npm run s:app:min && \
+-    docker compose run --rm min npm run test
+-fi
+-
+-if [ "$1" = "" ] || [ "$1" = "nx" ]; then
+-  docker compose run --rm ng-mocks npm run s:nx && \
+-    docker compose run --rm ng-mocks npm run s:test:nx && \
+-    docker compose run --rm ng-mocks npm run s:app:nx && \
+-    docker compose run --rm nx npm run test
+-fi
++set -euo pipefail
++
++MODE="${1:-base}"
++
++cd "$(dirname "$0")"
++
++case "$MODE" in
++  base)
++    # A small, stable subset of existing tests that should pass on the base commit.
++    # Note: `karma.conf.ts` honors `KARMA_SUITE` to select a specific spec pattern.
++    KARMA_SUITE='./tests/spies/test.spec.ts' npx --no-install karma start
++    ;;
++  new)
++    # Only the new tests added for this task. These should fail until the feature is implemented.
++    # Note: `karma.conf.ts` honors `KARMA_SUITE` to select a specific spec pattern.
++    KARMA_SUITE='./tests/async-compliance/test.spec.ts' npx --no-install karma start
++    ;;
++  *)
++    echo "Usage: ./test.sh base|new" >&2
++    exit 2
++    ;;
++esac
+diff --git a/tests/async-compliance/test.spec.ts b/tests/async-compliance/test.spec.ts
+new file mode 100644
+index 000000000..8114ba646
+--- /dev/null
++++ b/tests/async-compliance/test.spec.ts
+@@ -0,0 +1,171 @@
++import { Component, Injectable, NgModule } from '@angular/core';
++
++import { MockBuilder, MockInstance, MockRender, MockService, ngMocks } from 'ng-mocks';
++
++@Injectable()
++class TargetService {
++  // eslint-disable-next-line @typescript-eslint/no-unused-vars
++  public work(_value?: unknown): unknown {
++    return undefined;
++  }
++}
++
++@Component({
++  selector: 'target-async-compliance',
++  ['standalone' as never /* TODO: remove after upgrade to a14 */]: false,
++  template: '',
++})
++class TargetComponent {
++  public constructor(private readonly service: TargetService) {
++    this.service.work('ctor');
++  }
++}
++
++@NgModule({
++  declarations: [TargetComponent],
++  providers: [TargetService],
++})
++class TargetModule {}
++
++describe('async compliance detector', () => {
++  // fix for jest without jasmine assertions
++  const assertion: any = typeof jasmine === 'undefined' ? expect : jasmine;
++
++  it('records sync vs async settling for thenable returns', async () => {
++    const service = MockService(TargetService);
++    const spy: any = (service as any).work;
++
++    expect(spy.enableStrictAsyncCompliance()).toBe(spy);
++
++    spy.and.callFake(() => ({
++      then: (resolve: (value: string) => void) => resolve('sync'),
++    }));
++
++    spy('a');
++    await Promise.resolve();
++    expect(spy.getAsyncCompliance()).toEqual([false]);
++
++    spy.and.callFake(() => ({
++      then: (resolve: (value: string) => void) =>
++        Promise.resolve().then(() => resolve('async')),
++    }));
++
++    spy('b');
++    await Promise.resolve();
++    await Promise.resolve();
++    expect(spy.getAsyncCompliance()).toEqual([false, true]);
++  });
++
++  it('returns an immutable snapshot and supports reset/restore lifecycle', async () => {
++    const service = MockService(TargetService);
++    const spy: any = (service as any).work;
++
++    spy.enableStrictAsyncCompliance();
++
++    spy.and.callFake(() => Promise.resolve('ok'));
++    spy();
++    await Promise.resolve();
++
++    const snapshot: boolean[] = spy.getAsyncCompliance();
++    expect(snapshot).toEqual([true]);
++    expect(() => snapshot.push(false)).not.toThrow();
++    expect(spy.getAsyncCompliance()).toEqual([true]);
++
++    spy.resetAsyncCompliance();
++    expect(spy.getAsyncCompliance()).toEqual([]);
++
++    spy();
++    await Promise.resolve();
++    expect(spy.getAsyncCompliance()).toEqual([true]);
++
++    spy.restoreAsyncCompliance();
++    expect(spy.getAsyncCompliance()).toEqual([]);
++
++    spy();
++    await Promise.resolve();
++    expect(spy.getAsyncCompliance()).toEqual([]);
++
++    spy.enableStrictAsyncCompliance();
++    spy();
++    await Promise.resolve();
++    expect(spy.getAsyncCompliance()).toEqual([true]);
++  });
++
++  it('supports spies created via MockInstance and clears on MockInstance.restore()', async () => {
++    MockInstance.remember();
++    try {
++      await MockBuilder(TargetComponent, TargetModule);
++
++      const spy: any = MockInstance(
++        TargetService,
++        'work',
++        typeof jest === 'undefined' ? jasmine.createSpy() : jest.fn(),
++      );
++
++      expect(spy.enableStrictAsyncCompliance()).toBe(spy);
++
++      // Ensure the spy returns a thenable so compliance tracking is unambiguous.
++      if (typeof jest === 'undefined') {
++        spy.and.returnValue(Promise.resolve('ok'));
++      } else {
++        spy.mockReturnValue(Promise.resolve('ok'));
++      }
++
++      MockRender(TargetComponent);
++      await Promise.resolve();
++      expect(spy.getAsyncCompliance()).toEqual([true]);
++
++      // Global restore mechanism: should disable/clear compliance tracking.
++      MockInstance.restore();
++      expect(spy.getAsyncCompliance()).toEqual([]);
++
++      MockRender(TargetComponent);
++      await Promise.resolve();
++      expect(spy.getAsyncCompliance()).toEqual([]);
++
++      spy.enableStrictAsyncCompliance();
++      MockRender(TargetComponent);
++      await Promise.resolve();
++      expect(spy.getAsyncCompliance()).toEqual([true]);
++    } finally {
++      // Ensure we don't leak scopes to other tests.
++      MockInstance.restore();
++      ngMocks.reset();
++    }
++  });
++
++  it('clears/disables compliance tracking on ngMocks.reset()', async () => {
++    const service = MockService(TargetService);
++    const spy: any = (service as any).work;
++
++    spy.enableStrictAsyncCompliance();
++
++    // Ensure a thenable return so recording is unambiguous.
++    spy.and.returnValue(Promise.resolve('ok'));
++
++    spy();
++    await Promise.resolve();
++    expect(spy.getAsyncCompliance()).toEqual([true]);
++
++    // Treat ngMocks.reset() as a global restore/reset mechanism.
++    ngMocks.reset();
++    expect(spy.getAsyncCompliance()).toEqual([]);
++
++    spy();
++    await Promise.resolve();
++    expect(spy.getAsyncCompliance()).toEqual([]);
++  });
++
++  it('does not record calls that return non-thenables', () => {
++    const service = MockService(TargetService);
++    const spy: any = (service as any).work;
++
++    spy.enableStrictAsyncCompliance();
++    spy.and.returnValue(123);
++
++    spy();
++    expect(spy.getAsyncCompliance()).toEqual([]);
++  });
++});
++
++
+diff --git a/tests/spies/test.spec.ts b/tests/spies/test.spec.ts
+index 3ec31d50c..6c2c22c76 100644
+--- a/tests/spies/test.spec.ts
++++ b/tests/spies/test.spec.ts
+@@ -75,6 +75,7 @@ describe('spies:manual-mock', () => {
+ 
+     const targetService = ngMocks.findInstance(TargetService);
+     expect((targetService as any).manual).toBe(true);
++    // Note: keep this spec behavior-only; avoid adding extra runtime expectations for base-mode stability.
+ 
+     const component = ngMocks.find(
+       fixture.debugElement,

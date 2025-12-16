@@ -75,6 +75,7 @@ describe('spies:manual-mock', () => {
 
     const targetService = ngMocks.findInstance(TargetService);
     expect((targetService as any).manual).toBe(true);
+    // Note: keep this spec behavior-only; avoid adding extra runtime expectations for base-mode stability.
 
     const component = ngMocks.find(
       fixture.debugElement,

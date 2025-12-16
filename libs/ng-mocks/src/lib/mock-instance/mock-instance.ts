@@ -2,6 +2,7 @@ import { InjectionToken, Injector } from '@angular/core';
 
 import { AnyDeclaration, AnyType } from '../common/core.types';
 import funcImportExists from '../common/func.import-exists';
+import { globalRestoreAsyncCompliance, installAsyncComplianceApi } from '../common/async-compliance';
 import ngMocksStack, { NgMocksStack } from '../common/ng-mocks-stack';
 import ngMocksUniverse from '../common/ng-mocks-universe';
 
@@ -229,6 +230,12 @@ export function MockInstance<T>(declaration: AnyDeclaration<T>, ...args: any[]) 
   if (args.length > 0) {
     const { key, value, accessor } = parseMockInstanceArgs(args);
 
+    // If a spy function is provided (e.g., jasmine.createSpy / jest.fn), ensure the async compliance API exists on it.
+    // This keeps the feature opt-in while making the API available on all ng-mocks spies/mocks.
+    if (typeof value === 'function') {
+      installAsyncComplianceApi(value);
+    }
+
     return mockInstanceConfig(declaration, key, value, accessor);
   }
 
@@ -270,6 +277,8 @@ export namespace MockInstance {
    * @see https://ng-mocks.sudo.eu/api/MockInstance#restore
    */
   export function restore() {
+    // Treat MockInstance.restore() as a global restore mechanism for async compliance tracking.
+    globalRestoreAsyncCompliance();
     ngMocksStack.stackPop();
   }
 
